@@ -8,7 +8,7 @@ export default function Name(){
         const typed = new Typed(lo.current, {
           strings: ['Network Engineer', 'SysAdmin', 'Graphic Designer'],
           backSpeed: 20,
-          typeSpeed: 40,
+          typeSpeed: 60,
           loop: true,
         });
     

@@ -36,7 +36,7 @@ const App = () => {
         setCurrentPage(page);
         onClick?.();
       }}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors w-full
+      className={`cursor-pointer flex items-center gap-2 px-4 py-2 rounded-lg transition-colors w-full
         ${currentPage === page 
           ? isDark ? 'bg-blue-500 text-white' : 'bg-blue-600 text-white'
           : isDark 
@@ -75,7 +75,7 @@ const App = () => {
     </motion.div>
   );
 
-  // Reuse existing content components...
+  // Home Page content
   const MainContent = () => (
     <div className="min-h-screen flex items-center justify-center px-4 ">
       <motion.div
@@ -84,9 +84,10 @@ const App = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Avatar / Foto */}
-        <div className="relative w-48 h-48 rounded-full overflow-hidden mb-4 md:mb-0">
-          {/* Ganti src sama link foto/avatarmu */}
+        <motion.div
+        whileHover={{ scale: 1.10 }}
+        className="relative w-48 h-48 rounded-full overflow-hidden mb-4 md:mb-0">
+          {/* Avatar */}
           <img
             src="/sakiko.jpeg"
             alt="Avatar"
@@ -94,12 +95,12 @@ const App = () => {
           />
           {/* Glow effect */}
           <div className="absolute inset-0 rounded-full border-4 border-blue-400 animate-pulse" />
-        </div>
+        </motion.div>
 
         {/* Text */}
         <div>
           <motion.h6
-            className={`text-base text-blue-400 font-medium`}
+            className={`text-base text-blue-400 font-medium select-none`}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -112,7 +113,7 @@ const App = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">Muhammad Raihan Aslan</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">Lorem Ipsum Dolor Sit Amet</span>
           </motion.h1>
 
           <motion.h2
@@ -151,7 +152,7 @@ const App = () => {
           className="w-full h-full rounded-full object-cover"
         />
       </motion.div>
-      <motion.h1 
+      <motion.h1
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className={`antialiased text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
@@ -244,6 +245,13 @@ const App = () => {
             <NavButton page="projects" label="Project" icon={Code} />
             <NavButton page="contact" label="Contact" icon={Phone} />
           </div>
+            <motion.a
+            whileHover={{ scale: 1.05 }}
+            href='https://github.com/ChocoRin43/ChocoRin43'
+            className='items-end p-2 text-right justify-between'
+            >
+              <Icon icon={siGithub}/>
+            </motion.a>
           
           <button
             onClick={() => setIsMobileMenuOpen(true)}
