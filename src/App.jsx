@@ -113,7 +113,7 @@ const App = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">Lorem Ipsum Dolor Sit Amet</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">Muhammad Raihan Aslan</span>
           </motion.h1>
 
           <motion.h2
