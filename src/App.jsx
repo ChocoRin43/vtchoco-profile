@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Code, House, Phone, Sun, Moon, Menu, X, UserRound } from 'lucide-react';
 import { siGithub, siInstagram } from 'simple-icons';
 import Name from '../components/name';
-import PageNotFound from './notFound';
+import Countdown from 'react-countdown';
 
-const App = () => {
+const Home = () => {
   const [currentPage, setCurrentPage] = useState('main');
   const [isDark, setIsDark] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -317,5 +317,39 @@ const App = () => {
     </div>
   );
 };
+
+const NotFound = () => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/');
+    }, 5000)
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
+  return (
+    <div className='main p-5 flex justify-center items-center w-full h-screen'>
+        <Countdown date={Date.now() + 4000} />
+        <img className='w-64' src='404.jpeg'/>
+        <div>404</div>
+        <br />
+        kamu sepertinya nyasar?
+        <br />
+        aku balikin ke home 
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 export default App;
