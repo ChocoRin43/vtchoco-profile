@@ -139,35 +139,55 @@ const Home = () => {
   );
 
   const SkillsContent = () => (
-    <div className="flex flex-col items-center justify-center text-center">
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className={`w-32 h-32 rounded-full ${isDark ? 'bg-blue-400' : 'bg-blue-500'} mb-6`}
-      >
-        <img 
-          src="/sakiko.jpeg"
-          alt="Profile" 
-          className="w-full h-full rounded-full object-cover"
+    <>
+    <motion.div 
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}
+    className= {`flex p-2 m-2 flex-col items-center justify-center rounded-2xl border-2 ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-gray-300 border-gray-400'}`}>
+      <img 
+        src="/sakiko.jpeg"
+        alt="Profile" 
+        className="object-cover rounded-full w-48 h-48 m-6"
         />
-      </motion.div>
-      <motion.h1
-        initial={{ y: 20, opacity: 0 }}
+      <div className={`about ${isDark ? 'text-amber-50' : 'text-neutral-900'}`}>
+      Hi everyone! I am fresh Graduate Network Engineer and IT Support with 1 year of experience in designing, implementing, and maintaining network infrastructure and providing technical support. 
+      Skilled in network troubleshooting, system management, and providing efficient IT solutions. Have MTCNA certification
+      </div>
+    </motion.div>
+    </>
+    /* Main content old
+    
+    <div className="flex flex-col items-center justify-center text-center">
+    <motion.div
+    initial={{ scale: 0 }}
+    animate={{ scale: 1 }}
+    transition={{ duration: 0.5 }}
+    className={`w-32 h-32 rounded-full ${isDark ? 'bg-blue-400' : 'bg-blue-500'} mb-6`}
+    >
+    <img 
+    src="/sakiko.jpeg"
+    alt="Profile" 
+    className="w-full h-full rounded-full object-cover"
+    />
+    </motion.div>
+    <motion.h1
+    initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className={`antialiased text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
       >
-        Choco
+      Choco
       </motion.h1>
       <motion.p 
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.2 }}
+      className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
       >
-        <Name />
+      <Name />
       </motion.p>
-    </div>
+      </div>
+      */
   );
 
   const ProjectsContent = () => (

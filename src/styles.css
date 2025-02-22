@@ -38,3 +38,10 @@ body {
   text-align: center;
   font-family: 'Roboto Mono', monospace;
 }
+
+.about {
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: 'Poppins', serif;
+  text-align: center;
+}
