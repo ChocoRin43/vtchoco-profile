@@ -229,7 +229,7 @@ const Home = () => {
       >
         <div className="flex items-center gap-4">
           <Mail className="text-blue-500" />
-          <a href="mailto:muhammadaslan2229@gmail.com" 
+          <a href="mailto:ren@choco.my.id" 
              className={`text-lg hover:text-blue-500 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
             muhammadaslan2229@gmail.com
           </a>
