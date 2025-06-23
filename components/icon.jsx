@@ -4,12 +4,12 @@ import { isDark } from '../pages/index';
  * @param {string} icon - Data ikon (dari simple-icons, contoh: siGithub)
  * @param {string} size - Ukuran ikon (default: 24)
  */
-const Icon = ({ icon, size = 24 }) => {    
+const Icon = ({ icon }) => {    
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      height={size}
+      height="24"
       fill={isDark ? 'white' : 'black'}
     >
       <path d={icon.path} />

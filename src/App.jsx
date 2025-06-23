@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Code, House, Phone, Sun, Moon, Menu, X, UserRound } from 'lucide-react';
-import { siGithub, siInstagram } from 'simple-icons';
+import { siGithub, siInstagram, siCisco, siMikrotik, siJunipernetworks, siLinux } from 'simple-icons';
 import Name from '../components/name';
 import Countdown from 'react-countdown';
 
@@ -11,12 +11,37 @@ const Home = () => {
   const [isDark, setIsDark] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  const Icon = ({ icon, size = 24 }) => {    
+  const PgBar = ({ percentage = 0, height = 'h-4', bgColor = 'bg-blue-500', trackColor = 'bg-gray-200', showLabel = true, animated = false, rounded = true }) => {
+    // Pastikan percentage tidak melebihi 100 atau kurang dari 0
+    const validPercentage = Math.min(100, Math.max(0, percentage));
+    
+    const progressStyle = animated ? 'transition-all duration-300 ease-out' : '';
+    const roundedClass = rounded ? 'rounded-full' : '';
+    
+    return (
+      <div className="w-full">
+        {showLabel && (
+          <div className="flex justify-between mb-2">
+            <span className="text-sm font-medium text-gray-500">Progress</span>
+            <span className="text-sm font-medium text-gray-500">{validPercentage}%</span>
+          </div>
+        )}
+        <div className={`w-full ${trackColor} ${roundedClass} ${height} overflow-hidden`}>
+          <div 
+            className={`${height} ${bgColor} ${roundedClass} ${progressStyle}`}
+            style={{ width: `${validPercentage}%` }}
+          />
+        </div>
+      </div>
+    );
+  };
+
+  const Icon = ({ icon }) => {    
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        height={size}
+        height='24'
         fill={isDark ? 'white' : 'black'}
       >
         <path d={icon.path} />
@@ -190,14 +215,21 @@ const Home = () => {
       */
   );
 
+  const skill= [
+    { id: 1, title: 'Mikrotik', rate: 90, desc: 'MTCNA', iCn: 'siMikrotik' },
+    { id: 2, title: 'Cisco', rate: 80, desc: 'CCNA', iCn: 'siCisco' },
+    { id: 3, title: 'Juniper', rate: 20, desc: 'JUNOS', iCn: 'siJunipernetworks' },
+    { id: 4, title: 'Sysadmin', rate: 75, desc: 'Debian and Rocky Linux', iCn: 'siLinux'}
+  ]
+
   const ProjectsContent = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-      {[1, 2, 3, 4].map((project) => (
+      {skill.map((skill) => (
         <motion.div
-          key={project}
+          key={skill.id}
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: project * 0.1 }}
+          transition={{ delay: skill * 0.1 }}
           className={`p-6 rounded-lg ${
             isDark 
               ? 'bg-gray-800 shadow-gray-900' 
@@ -205,21 +237,23 @@ const Home = () => {
           }`}
         >
           <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Project {project}
+            {skill.title}
           </h3>
           <p className={`mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-            Lorem ipsum {project} Dolor Sit Amet
+            {skill.desc}
           </p>
+          <PgBar percentage={`${skill.rate}`} animated={true} bgColor="bg-gray-700" />
+        </motion.div>
+      ))}
+    </div>
+  );
+  /*
           <div className="flex gap-2">
             <a href="https://net.rnimev3.my.id" className="text-blue-500 hover:underline">Demo</a>
             <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>•</span>
             <a href="https://github.com/ChocoRin43/ChocoRin43" className="text-blue-500 hover:underline">GitHub</a>
           </div>
-        </motion.div>
-      ))}
-    </div>
-  );
-
+  */
   const ContactContent = () => (
     <div className="flex flex-col items-center justify-center space-y-6">
       <motion.div
@@ -262,7 +296,7 @@ const Home = () => {
           <div className="hidden md:flex gap-4">
             <NavButton page="main" label="Home" icon={House} />
             <NavButton page="skill" label="About" icon={UserRound} />
-            <NavButton page="projects" label="Project" icon={Code} />
+            <NavButton page="projects" label="Skill" icon={Code} />
             <NavButton page="contact" label="Contact" icon={Phone} />
           </div>
             <motion.a
